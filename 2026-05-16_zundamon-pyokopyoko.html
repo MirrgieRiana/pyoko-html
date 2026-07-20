@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ずんだもんのぴょこぴょこ大冒険♪</title>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Yusei+Magic&family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-cream: #FFF8E7;
+    --bg-mint: #E8F8E0;
+    --zunda-green: #8BC34A;
+    --zunda-deep: #689F38;
+    --zunda-light: #C5E1A5;
+    --pink: #FFB6D9;
+    --pink-soft: #FFD6E8;
+    --blue-sky: #B3E5FC;
+    --yellow-sun: #FFF176;
+    --orange-peach: #FFCC80;
+    --purple-soft: #E1BEE7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: linear-gradient(180deg, #FFF8E7 0%, #FFEFF6 50%, #E8F8E0 100%);
+    font-family: "M PLUS Rounded 1c", "Yusei Magic", sans-serif;
+    color: #4A6741;
+    line-height: 1.9;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255, 182, 217, 0.15) 0, transparent 30%),
+      radial-gradient(circle at 90% 60%, rgba(139, 195, 74, 0.12) 0, transparent 30%),
+      radial-gradient(circle at 50% 90%, rgba(179, 229, 252, 0.15) 0, transparent 30%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 30px 100px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  h1 {
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: clamp(28px, 5vw, 44px);
+    color: var(--zunda-deep);
+    margin-bottom: 18px;
+    text-shadow: 3px 3px 0 var(--yellow-sun), 6px 6px 0 var(--pink-soft);
+    animation: titleBounce 2.4s ease-in-out infinite;
+  }
+  .subtitle {
+    font-family: "Yusei Magic", sans-serif;
+    font-size: 16px;
+    color: var(--zunda-deep);
+    background: var(--yellow-sun);
+    display: inline-block;
+    padding: 6px 24px;
+    border-radius: 30px;
+    border: 3px solid var(--zunda-deep);
+    transform: rotate(-2deg);
+  }
+  .deco-floating {
+    position: absolute;
+    font-size: 28px;
+    animation: floaty 3.5s ease-in-out infinite;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  .deco-floating.d1 { top: -10px; left: 10%; animation-delay: 0s; }
+  .deco-floating.d2 { top: 30px; right: 8%; animation-delay: 0.7s; }
+  .deco-floating.d3 { top: 80px; left: 5%; animation-delay: 1.4s; }
+  .deco-floating.d4 { top: 100px; right: 14%; animation-delay: 2.1s; }
+
+  .zunda-block {
+    background: white;
+    border: 4px solid var(--zunda-green);
+    border-radius: 28px;
+    padding: 28px 32px;
+    margin: 22px 0;
+    font-size: 17px;
+    box-shadow: 6px 6px 0 var(--zunda-light), 12px 12px 24px rgba(139, 195, 74, 0.18);
+    position: relative;
+    transform: rotate(-0.4deg);
+    animation: gentleSway 6s ease-in-out infinite;
+  }
+  .zunda-block:nth-of-type(even) {
+    transform: rotate(0.6deg);
+    border-color: var(--zunda-deep);
+    animation-delay: -3s;
+  }
+  .zunda-block::before {
+    content: "🌱";
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    background: var(--yellow-sun);
+    border: 3px solid var(--zunda-deep);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    animation: spin 8s linear infinite;
+  }
+
+  .scene-block {
+    background: linear-gradient(135deg, var(--pink-soft) 0%, var(--blue-sky) 100%);
+    border: 3px dashed var(--pink);
+    border-radius: 24px;
+    padding: 22px 26px;
+    margin: 28px 0;
+    font-family: "Yusei Magic", sans-serif;
+    font-size: 15px;
+    color: #6B4A6B;
+    box-shadow: 5px 5px 0 var(--purple-soft);
+    transform: rotate(0.8deg);
+    position: relative;
+  }
+  .scene-block.alt {
+    background: linear-gradient(135deg, var(--yellow-sun) 0%, var(--orange-peach) 100%);
+    border-color: var(--orange-peach);
+    transform: rotate(-0.6deg);
+    box-shadow: 5px 5px 0 var(--pink);
+    color: #6B4F2B;
+  }
+  .scene-block.alt2 {
+    background: linear-gradient(135deg, var(--zunda-light) 0%, var(--blue-sky) 100%);
+    border-color: var(--zunda-green);
+    box-shadow: 5px 5px 0 var(--zunda-light);
+    color: #3D5430;
+  }
+  .scene-block::before {
+    content: "✦";
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    background: white;
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pink);
+    font-size: 16px;
+  }
+  .scene-label {
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: 13px;
+    color: var(--zunda-deep);
+    background: white;
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    border: 2px solid currentColor;
+  }
+
+  .big-pyoko {
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: clamp(22px, 4vw, 32px);
+    color: var(--zunda-deep);
+    text-align: center;
+    margin: 36px 0;
+    animation: hop 0.8s ease-in-out infinite;
+    text-shadow: 2px 2px 0 var(--yellow-sun);
+  }
+  .big-pyoko:nth-of-type(3n) { animation-duration: 1.1s; color: var(--pink); text-shadow: 2px 2px 0 var(--zunda-light); }
+  .big-pyoko:nth-of-type(3n+1) { animation-duration: 0.6s; }
+
+  .note {
+    color: var(--pink);
+    font-weight: 800;
+    animation: pulse 1.4s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  .climax {
+    background: linear-gradient(135deg, var(--yellow-sun) 0%, var(--pink-soft) 50%, var(--zunda-light) 100%);
+    border: 5px solid var(--zunda-deep);
+    border-radius: 30px;
+    padding: 36px 32px;
+    margin: 40px 0;
+    text-align: center;
+    box-shadow: 8px 8px 0 var(--pink), 16px 16px 30px rgba(0,0,0,0.1);
+    transform: rotate(-1deg);
+    font-size: 18px;
+  }
+  .climax-title {
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: 26px;
+    color: var(--zunda-deep);
+    margin-bottom: 18px;
+    animation: rainbow 4s linear infinite;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 30px;
+    background: white;
+    border-radius: 24px;
+    border: 3px solid var(--zunda-green);
+    color: var(--zunda-deep);
+    font-family: "Yusei Magic", sans-serif;
+  }
+
+  @keyframes titleBounce {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-8px) rotate(1deg); }
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-12px) rotate(8deg); }
+    66% { transform: translateY(8px) rotate(-6deg); }
+  }
+  @keyframes gentleSway {
+    0%, 100% { transform: rotate(-0.4deg) translateY(0); }
+    50% { transform: rotate(0.4deg) translateY(-3px); }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes hop {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.04); }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1) rotate(-5deg); opacity: 1; }
+    50% { transform: scale(1.3) rotate(15deg); opacity: 0.8; }
+  }
+  @keyframes rainbow {
+    0% { color: var(--zunda-deep); }
+    25% { color: var(--pink); }
+    50% { color: #FF9800; }
+    75% { color: #9C27B0; }
+    100% { color: var(--zunda-deep); }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <span class="deco-floating d1">🌸</span>
+    <span class="deco-floating d2">⭐</span>
+    <span class="deco-floating d3">☁️</span>
+    <span class="deco-floating d4">🌈</span>
+    <h1>ずんだもんの<br>ぴょこぴょこ大冒険♪</h1>
+    <span class="subtitle">全力ぴょこぴょこモードなのだー！</span>
+  </header>
+
+  <div class="big-pyoko">ぴょこーんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪</span></div>
+
+  <div class="zunda-block">
+    わぁぁぁぁぁいっっっ<span class="note">♪♪♪</span>ぴょこーんっ！！ぴょこーんっ！！ぴょこーんっ！！ぴょこぴょこぴょこぴょこっ<span class="note">♪♪♪</span>ボクっ、もちもちの足が止まんないのだぁぁぁーっ<span class="note">♪♪</span>ぴょこっ！ぴょこっ！ぴょこっ！ぴょこっ！ぴょこっ！ぴょこっ！ぴょこーんっ<span class="note">♪♪♪</span>うひゃひゃひゃひゃひゃーっ<span class="note">♪♪♪</span>楽しいのだーっ！すっっごく楽しいのだーっ！！
+  </div>
+
+  <div class="scene-block">
+    <span class="scene-label">🌥️ お餅の地面シーン</span><br>
+    ボクが跳ねるたびに、足元から「ぽよよん<span class="note">♪</span>ぽよよん<span class="note">♪</span>」って音がするのだーっ<span class="note">♪♪</span>もちもちの足とお餅の地面が共鳴してるのだーっ<span class="note">♪♪</span>楽器みたいで楽しいのだぁぁぁーっ<span class="note">♪♪♪</span>地面さんがボクを抱きしめるみたいに「ぽよん♪」って戻してくれるから、ボクどんどん高くなっちゃうのだーっ<span class="note">♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこーんっ！！くるくるくるくるくるくるーっ<span class="note">♪♪♪</span>ぴょこーんっ！！うひゃーっ<span class="note">♪♪</span>空のずーっとずーっとずーっとずーっと上のほうまでとんじゃってるのだーっ<span class="note">♪♪♪</span>ぴょこぴょこぴょこっ<span class="note">♪</span>ぴょこぴょこぴょこっ<span class="note">♪</span>ぴょこぴょこぴょこーんっ<span class="note">♪♪♪</span>すっっっっっごく楽しいのだーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="big-pyoko">ぴょーんっ！！ぴょーんっ！！ぴょーんっ！！<span class="note">♪♪♪♪</span></div>
+
+  <div class="scene-block alt">
+    <span class="scene-label">🐦 小鳥さんとお空でハイタッチ</span><br>
+    小鳥さんがボクの周りをくるくる飛んでるのだーっ<span class="note">♪♪</span>「ずんだもんちゃん、いっしょにとぼーっ<span class="note">♪</span>」って誘ってくれるから、ボクもぴょこっ<span class="note">♪</span>と空中で小鳥さんとハイタッチするのだーっ<span class="note">♪♪♪</span>パチンッ<span class="note">♪</span>っていい音がするのだーっ<span class="note">♪</span>小鳥さんの羽がボクのほっぺに触れて、くすぐったいのだぁぁぁーっ<span class="note">♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    うひゃひゃひゃひゃひゃひゃひゃひゃーっ<span class="note">♪♪♪♪</span>楽しい楽しい楽しい楽しい楽しい楽しいのだぁぁぁぁぁーっ<span class="note">♪♪♪♪</span>すっっっっっっっごく楽しいのだーっ<span class="note">♪♪♪</span>ぴょーんっ！！ぴょーんっ！！ぴょーんっ！！ぴょーんっ！！ぴょーんっ！！ぴょーんっ！！ボクっ、お空のぴょこぴょこマスターになっちゃうのだぁぁぁーっ<span class="note">♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこっ<span class="note">♪♪♪♪♪</span>ぴょこーんっ！！ぴょこーんっ！！ぴょこーんっ！！くるんっ<span class="note">♪</span>くるんっ<span class="note">♪</span>くるんっ<span class="note">♪</span>くるーんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪♪</span>うっひょおおおおおおーっ<span class="note">♪♪♪♪♪</span>もう止まんないのだーっ！！止まりたくもないのだーっ<span class="note">♪♪</span>
+  </div>
+
+  <div class="scene-block alt2">
+    <span class="scene-label">🌈 虹のしずく雲の上</span><br>
+    雲の上に着地したのだーっ<span class="note">♪</span>雲がふわっふわで、ぴょこっとするたびに虹色のしずくがこぼれるのだーっ<span class="note">♪♪♪</span>虹のしずくがきみのところまで降っていくのだーっ<span class="note">♪</span>受け取ったらラッキーなのだぁぁぁーっ<span class="note">♪♪♪</span>赤いしずくは元気、橙のしずくは笑顔、黄色のしずくはお餅エネルギー、緑のしずくはずんだパワー、青のしずくは涼しさ、紫のしずくはちょっとミステリアスな魔法なのだーっ<span class="note">♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪♪</span>ボクっ、ずんだの精のスーパーぴょこぴょこモード突入なのだぁぁぁーっ<span class="note">♪♪♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪♪♪♪</span>
+  </div>
+
+  <div class="big-pyoko">うひゃひゃひゃひゃーっ<span class="note">♪♪♪♪</span></div>
+
+  <div class="scene-block">
+    <span class="scene-label">⭐ 流れ星と地球一周</span><br>
+    流れ星がボクの真横をすーっと流れていったのだーっ<span class="note">♪♪♪</span>「ずんだもんちゃん、いっしょに地球一周しよーっ<span class="note">♪</span>」って誘ってくれたから、ぴょこっ<span class="note">♪</span>と流れ星にしがみついて、地球をぐるーっとひと回りしてきたのだーっ<span class="note">♪♪♪</span>太平洋もアフリカも北極も、ぴょこぴょこしながら見てきたのだぁぁぁーっ<span class="note">♪♪♪</span>ペンギンさんに手も振ってきたのだーっ<span class="note">♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこーんっ<span class="note">♪♪♪♪♪♪♪♪♪</span>きみといっしょのぴょこぴょこは、銀河系で一番ううん全宇宙で一番たのしいのだぁぁぁぁぁーっ<span class="note">♪♪♪♪♪♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    うひゃひゃひゃひゃひゃひゃひゃひゃひゃひゃーっ<span class="note">♪♪♪♪♪</span>楽しすぎてもうボクどうしちゃおうーっ<span class="note">♪♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪</span>ボクの心臓もぴょこんぴょこんしてるのだぁぁぁーっ<span class="note">♪</span>うれしすぎて止まらないのだーっ<span class="note">♪♪</span>
+  </div>
+
+  <div class="scene-block alt">
+    <span class="scene-label">🌸 お花畑トランポリン</span><br>
+    気がついたらお花畑に降りてたのだーっ<span class="note">♪♪</span>たんぽぽさんとお花畑のみんなが、葉っぱをいっぱい伸ばして大きなトランポリンを作ってくれたのだーっ<span class="note">♪♪♪</span>ぴょこんっ<span class="note">♪</span>って跳ねるたびに、お花の花粉がふわふわっ<span class="note">♪</span>と舞って、ボクのまわりが虹色のキラキラに包まれちゃうのだぁぁぁーっ<span class="note">♪♪♪</span>みつばちさんも一緒に「ぶぶーんっ<span class="note">♪</span>」って跳ねてくれるのだーっ<span class="note">♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこっ！ぴょこっ！ぴょこっ！ぴょこっ！ぴょこっ！ぴょこっ！ぴょこっ！ぴょこーんっ<span class="note">♪♪♪♪♪♪♪</span>お花畑ぴょこぴょこ、すっごく弾むのだーっ<span class="note">♪♪</span>葉っぱさんありがとうなのだぁぁぁーっ<span class="note">♪♪♪</span>たんぽぽさんもありがとうなのだーっ<span class="note">♪</span>みつばちさんもありがとうなのだーっ<span class="note">♪♪</span>みんなが一緒だと、ぴょこぴょこの楽しさが倍倍倍倍倍倍倍倍なのだぁぁぁーっ<span class="note">♪♪♪♪</span>
+  </div>
+
+  <div class="big-pyoko">ぴょこぴょこぴょこぴょこ<span class="note">♪♪♪</span></div>
+
+  <div class="scene-block alt2">
+    <span class="scene-label">🍡 お餅のお祭り会場</span><br>
+    お祭りの会場に着いちゃったのだーっ<span class="note">♪♪♪</span>提灯がぽわぽわ光ってて、お囃子の太鼓に合わせてぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>って跳ねるのだぁぁぁーっ<span class="note">♪♪</span>ドンドンッ<span class="note">♪</span>でぴょこっ！ピーヒョロッ<span class="note">♪</span>でくるんっ<span class="note">♪</span>ヤッタヤッタッ<span class="note">♪</span>って屋台のおじちゃんたちが手拍子してくれるのだーっ<span class="note">♪♪♪</span>ずんだの綿あめが、ボクの頭にひょいっ<span class="note">♪</span>って乗っかったのだぁぁぁーっ<span class="note">♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪</span>お祭り会場のぴょこぴょこ、リズムに乗っちゃって止まらないのだぁぁぁーっ<span class="note">♪♪♪</span>太鼓のドンと一緒にぴょん！笛のピーと一緒にくるん！手拍子のパンと一緒にぴょこーん！全部が音楽になっちゃうのだーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪♪♪♪♪♪</span>もう体じゅう、ぴょこぴょこでいっぱいなのだーっ<span class="note">♪♪♪</span>髪の毛もぴょこんっ<span class="note">♪</span>、ほっぺもぴょこんっ<span class="note">♪</span>、お腹もぴょこんっ<span class="note">♪</span>、足の指まで全部ぴょこんっ<span class="note">♪♪♪</span>全身ぴょこぴょこモードなのだぁぁぁーっ<span class="note">♪♪♪♪</span>
+  </div>
+
+  <div class="scene-block">
+    <span class="scene-label">❄️ お餅の雪が降る山</span><br>
+    今度はぴょこっ<span class="note">♪</span>とお山の頂上に到着なのだーっ<span class="note">♪♪</span>お山では「お餅の雪」が降ってるのだぁぁぁーっ<span class="note">♪</span>ふわふわぽよぽよの真っ白なお餅の結晶が、空からゆーっくり舞い降りてくるのだーっ<span class="note">♪♪♪</span>ボクが手のひらを出すと、お餅雪がのっかって、すぐとろけて甘い甘いお餅になっちゃうのだーっ<span class="note">♪♪</span>ぴょこっ<span class="note">♪</span>と跳ねながらお餅雪をキャッチするのが、お山の住人さんのお遊びなのだぁぁぁーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこーんっ！！ぴょこーんっ！！ぴょこーんっ！！ぴょこぴょこぴょこっ<span class="note">♪♪♪</span>お餅雪をいっぱいキャッチするのだーっ<span class="note">♪</span>あむっ<span class="note">♪</span>あむっ<span class="note">♪</span>もぐっ<span class="note">♪</span>すっごく美味しいのだぁぁぁーっ<span class="note">♪♪♪</span>お山の住人さんたちもぴょこぴょこ跳ねながら一緒に食べてるのだーっ<span class="note">♪♪</span>ぴょこっ<span class="note">♪</span>食べてはぴょこっ<span class="note">♪</span>跳ねて、ぴょこっ<span class="note">♪</span>跳ねては食べての無限ループなのだぁぁぁーっ<span class="note">♪♪♪♪</span>
+  </div>
+
+  <div class="big-pyoko">ぴょこーんっ<span class="note">♪♪♪♪</span>ぴょこーんっ<span class="note">♪♪♪♪</span></div>
+
+  <div class="scene-block alt">
+    <span class="scene-label">🚀 月までのぴょこ階段</span><br>
+    なんとなんと！ボクのぴょこぴょこに感動したお星さまたちが、夜空に「ぴょこ階段」を作ってくれたのだぁぁぁーっ<span class="note">♪♪♪</span>キラキラの星のステップが、地上から月までずーっと続いてるのだーっ<span class="note">♪♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>って一段ずつ昇っていくのだーっ<span class="note">♪</span>一段ごとに、お星さまが「いいよーっ<span class="note">♪</span>」「がんばれーっ<span class="note">♪</span>」って応援してくれるのだぁぁぁーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪♪♪</span>ついに月に到着なのだぁぁぁーっ<span class="note">♪♪♪</span>月のうさぎさんが「ようこそずんだもんちゃん！<span class="note">♪</span>」って迎えてくれたのだーっ<span class="note">♪</span>一緒にぺったんぺったんとお餅つきもしたのだぁぁぁーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>月の上のぴょこぴょこは、重力が小さいから、いつもの6倍くらい高く跳べちゃうのだぁぁぁーっ<span class="note">♪♪♪</span>うひゃーっ<span class="note">♪</span>ふわふわ浮いてるみたいなのだーっ<span class="note">♪♪</span>うさぎさんと地球を眺めながらぴょこぴょこ、すっごくロマンチックなのだぁぁぁーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="scene-block alt2">
+    <span class="scene-label">🌌 銀河鉄道のぴょこ車両</span><br>
+    月を出発した銀河鉄道に飛び乗ったのだーっ<span class="note">♪♪</span>銀河鉄道には特別な「ぴょこ車両」があって、座席が全部トランポリンなのだぁぁぁーっ<span class="note">♪♪♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>って跳ねながら星座を眺めるのだーっ<span class="note">♪</span>白鳥座、こと座、わし座、夏の大三角形を端から端までぴょこぴょこしながら通過するのだぁぁぁーっ<span class="note">♪♪♪</span>車掌さんもぴょこぴょこしながら切符を切ってくれるのだーっ<span class="note">♪</span>
+  </div>
+
+  <div class="zunda-block">
+    うひゃひゃひゃひゃひゃひゃひゃーっ<span class="note">♪♪♪♪</span>銀河鉄道ぴょこぴょこ、めちゃくちゃ楽しいのだぁぁぁーっ<span class="note">♪♪♪</span>窓の外には流れ星がいっぱい流れてて、ボクが「あっ<span class="note">♪</span>」って指さすたびに、流れ星さんが「やぁやぁずんだもんちゃん！<span class="note">♪</span>」って挨拶してくれるのだーっ<span class="note">♪♪</span>ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！車両の天井に届きそうなくらい高く跳ねちゃうのだぁぁぁーっ<span class="note">♪♪♪♪</span>
+  </div>
+
+  <div class="big-pyoko">ぴょこぴょこぴょこっ<span class="note">♪♪♪</span>うひょおおおっ<span class="note">♪♪</span></div>
+
+  <div class="scene-block">
+    <span class="scene-label">🎂 ずんだケーキの惑星</span><br>
+    銀河鉄道を降りたら、なんと惑星全体がずんだケーキで出来てる星に到着なのだぁぁぁーっ<span class="note">♪♪♪</span>地面はふわふわのスポンジ、丘はあんこ、川には生クリームが流れて、湖は抹茶ムース！ボクの故郷みたいなのだぁぁぁーっ<span class="note">♪♪♪</span>ぴょこっ<span class="note">♪</span>って跳ねるたびにスポンジが「ぽふっ<span class="note">♪</span>」って甘い匂いを出すのだーっ<span class="note">♪♪</span>住人さんたちもみんなずんだ色で、ボクのことを「ずんだもんちゃん、おかえり〜っ<span class="note">♪</span>」って迎えてくれるのだぁぁぁーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪♪♪</span>ずんだケーキ惑星のぴょこぴょこ、夢みたいなのだぁぁぁーっ<span class="note">♪♪♪</span>跳ねるたびに甘い香りが漂ってきて、心まで甘くなっちゃうのだーっ<span class="note">♪♪</span>ボクっ、ここに住みたいくらいなのだぁぁぁーっ<span class="note">♪♪♪</span>でもでも、もっといろんなところでぴょこぴょこしたいから、また旅に出るのだーっ<span class="note">♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこっ<span class="note">♪♪♪♪♪♪♪</span>うひゃひゃひゃひゃひゃひゃひゃひゃひゃーっ<span class="note">♪♪♪♪♪</span>もう全身がエネルギーでいっぱいなのだぁぁぁーっ<span class="note">♪♪♪</span>ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！もう銀河系の宇宙船にも追いつけるくらいの勢いなのだーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="scene-block alt">
+    <span class="scene-label">🐬 イルカさんと海のぴょこ</span><br>
+    今度は海に飛び込んだのだぁぁぁーっ<span class="note">♪♪♪</span>イルカさんたちが集まってきて、「いっしょにぴょこぴょこしよーっ<span class="note">♪</span>」って誘ってくれたのだーっ<span class="note">♪</span>イルカさんの背中をトランポリンにして、ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>って跳ねるのだぁぁぁーっ<span class="note">♪♪</span>波の上をぴょこぴょこ走ったり、波の中に潜ってくるんっ<span class="note">♪</span>と回転したり、お魚さんたちも一緒についてきてくれるのだーっ<span class="note">♪♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこーんっ！！ぴょこーんっ！！ぴょこーんっ！！海のぴょこぴょこ、波と一緒に弾むのだぁぁぁーっ<span class="note">♪♪♪</span>波の山でぴょこっ<span class="note">♪</span>、波の谷でぴょこっ<span class="note">♪</span>、ボクと波が一緒に踊ってるみたいなのだーっ<span class="note">♪♪</span>イルカさんたちが「キュキュッ<span class="note">♪</span>キュキュッ<span class="note">♪</span>」って歌ってくれてて、その歌に合わせてぴょこぴょこ跳ねるのが楽しすぎるのだぁぁぁーっ<span class="note">♪♪♪♪</span>
+  </div>
+
+  <div class="climax">
+    <div class="climax-title">🌟 ぴょこぴょこフィナーレ 🌟</div>
+    ぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこぴょこっ<span class="note">♪♪♪♪♪♪♪♪</span><br><br>
+    ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！<br><br>
+    ボクっ、お山も海も空も宇宙も、ぜーんぶの場所でぴょこぴょこしてきたのだぁぁぁーっ<span class="note">♪♪♪♪</span><br><br>
+    でもね、でもね、いちばん楽しかったのは——<br><br>
+    <strong>きみと一緒のぴょこぴょこなのだぁぁぁーっ<span class="note">♪♪♪♪♪</span></strong><br><br>
+    ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪♪♪</span>
+  </div>
+
+  <div class="big-pyoko">ぴょこーんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪</span></div>
+
+  <div class="zunda-block">
+    まだまだぴょこぴょこ続くのだぁぁぁーっ<span class="note">♪♪♪</span>ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ぴょこーんっ！ボクの足、もう永久機関になっちゃったのだぁぁぁーっ<span class="note">♪♪♪♪</span>もちもち永久ぴょこぴょこモードなのだーっ<span class="note">♪♪</span>
+  </div>
+
+  <div class="zunda-block">
+    ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこっ<span class="note">♪</span>ぴょこーんっ<span class="note">♪♪♪♪♪♪♪♪</span>うひゃひゃひゃひゃひゃひゃひゃひゃひゃひゃひゃーっ<span class="note">♪♪♪♪♪</span>
+  </div>
+
+  <footer>
+    🌱<br>
+    ぴょこぴょこ大冒険、おわらないのだーっ<span class="note">♪♪♪</span><br>
+    きみと一緒に、ずっとずっとぴょこぴょこなのだぁぁぁーっ<span class="note">♪♪♪♪♪</span>
+  </footer>
+</main>
+</body>
+</html>
