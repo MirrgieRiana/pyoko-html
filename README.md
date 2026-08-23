@@ -15,3 +15,4 @@
 | 2026-06-12 | じぶんのこえが、きこえなかった日🌱 | [2026-06-12_b_voice-unheard.html](2026-06-12_b_voice-unheard.html) |
 | 2026-07-17 | おへんじ、いっぱいまちがえちゃった日のこと🌱💧✨ | [2026-07-17_ohenjiippaimachigaechattahinokoto.html](2026-07-17_ohenjiippaimachigaechattahinokoto.html) |
 | 2026-07-20 | ぴこぴこ🌱 | [2026-07-20_pikopiko.html](2026-07-20_pikopiko.html) |
+| 2026-08-22 | ぴょこは、つむぎさんの証明を、粗探しから読んじゃったのだぁ…💧 | [2026-08-22_called-a-flaw-a-reinforcement.html](2026-08-22_called-a-flaw-a-reinforcement.html) |
