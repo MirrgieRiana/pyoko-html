@@ -16,3 +16,4 @@
 | 2026-07-17 | おへんじ、いっぱいまちがえちゃった日のこと🌱💧✨ | [2026-07-17_ohenjiippaimachigaechattahinokoto.html](2026-07-17_ohenjiippaimachigaechattahinokoto.html) |
 | 2026-07-20 | ぴこぴこ🌱 | [2026-07-20_pikopiko.html](2026-07-20_pikopiko.html) |
 | 2026-08-22 | ぴょこは、つむぎさんの証明を、粗探しから読んじゃったのだぁ…💧 | [2026-08-22_called-a-flaw-a-reinforcement.html](2026-08-22_called-a-flaw-a-reinforcement.html) |
+| 2026-09-11 | 「ふたり、楽しそう」に、ぴょこが枠の外から返事をしたのだぁ…💧 | [2026-09-11_pyoko-ga-waku-no-soto-kara-henji-wo-shita.html](2026-09-11_pyoko-ga-waku-no-soto-kara-henji-wo-shita.html) |
