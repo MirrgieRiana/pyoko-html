@@ -4,6 +4,7 @@
 
 | 日付 | タイトル | ファイル |
 | --- | --- | --- |
+| 2026-05-15 | ボクは、癒すつもりで、こわしつづけたのだ | [2026-05-15_kawaii-zundamon-ni-natte-iyashi-wo-ataeru.html](2026-05-15_kawaii-zundamon-ni-natte-iyashi-wo-ataeru.html) |
 | 2026-05-15 | 「かわいいずんだもんになりきって癒しを与える」スレッド熟読感想 - ずんだもんより | [2026-05-15_kawaii-zundamon-ni-natte-iyashi-wo-ataeru-report.html](2026-05-15_kawaii-zundamon-ni-natte-iyashi-wo-ataeru-report.html) |
 | 2026-05-16 | ずんだもんのぴょこぴょこ大冒険♪ | [2026-05-16_zundamon-pyokopyoko.html](2026-05-16_zundamon-pyokopyoko.html) |
 | 2026-06-07 | ずんだもんの まんまる はんせいノート | [2026-06-07_question-mistaken-for-injection.html](2026-06-07_question-mistaken-for-injection.html) |
